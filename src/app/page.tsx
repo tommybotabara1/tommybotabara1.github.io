@@ -33,9 +33,12 @@ const socialIcons = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#fbf8f1] text-[#151514]">
+      <a href="#content" className="skip-link">
+        Skip to portfolio content
+      </a>
       <SiteHeader />
 
-      <main id="top">
+      <main id="content">
         <section className="relative isolate overflow-hidden border-b border-[#ded8cb]">
           <Image
             src="/portfolio/hero-visual.jpg"
@@ -50,7 +53,7 @@ export default function Home() {
 
           <div className="mx-auto grid min-h-[560px] max-w-7xl items-center px-4 py-16 sm:min-h-[620px] sm:px-6 lg:min-h-[660px] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
             <div className="max-w-3xl fade-in-up">
-              <div className="mb-8 flex flex-wrap items-center gap-3 text-sm font-medium text-[#5f625d]">
+              <div className="mb-8 flex flex-wrap items-center gap-3 text-sm font-medium text-[#50534f]">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[#ded8cb] bg-[#fffdf7]/76 px-3 py-2">
                   <MapPin aria-hidden="true" className="size-4 text-[#2367ff]" />
                   Technology consultant
@@ -110,8 +113,8 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-px border-x border-[#ded8cb] bg-[#ded8cb] sm:grid-cols-3">
             {[
               ["6+", "years across engineering and consulting"],
-              ["04", "shareable local build snapshots"],
-              ["AIOS", "workspace, scripts and workflow focus"],
+              ["4", "shareable local build snapshots"],
+              ["Bridge", "business requirements and technical delivery"],
             ].map(([value, label]) => (
               <div key={label} className="bg-[#fffdf7] px-6 py-8 sm:px-8">
                 <p className="font-mono text-3xl font-semibold text-[#151514]">
@@ -129,7 +132,7 @@ export default function Home() {
               <p className="text-sm font-semibold text-[#66cdb2]">
                 Shareable builds
               </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight text-[#fffdf7] sm:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold leading-tight text-[#fffdf7] sm:text-4xl lg:text-5xl">
                 Folder skeletons of systems I can actually show.
               </h2>
               <p className="mt-5 text-lg leading-8 text-[#d8d1c4]">
@@ -171,7 +174,7 @@ export default function Home() {
                 <p className="text-sm font-semibold text-[#66cdb2]">
                   About / Now
                 </p>
-                <h2 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
+                <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl">
                   I learned consulting first, then kept moving toward the
                   technical work teams relied on.
                 </h2>
@@ -313,7 +316,7 @@ export default function Home() {
               <p className="text-sm font-semibold text-[#ff6b58]">
                 Contact
               </p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-[#151514] sm:text-5xl">
+              <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-[#151514] sm:text-4xl lg:text-5xl">
                 Let&apos;s talk about data, automation, or practical AI solutions.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5f625d]">
@@ -355,7 +358,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p>Tommy Botabara - technology consulting, data automation, and practical technical delivery.</p>
           <a
-            href="#top"
+            href="#content"
             className="inline-flex min-h-11 items-center gap-2 font-semibold text-[#fffdf7] hover:text-[#66cdb2] focus:outline-none focus:ring-2 focus:ring-[#66cdb2] focus:ring-offset-2 focus:ring-offset-[#151514]"
           >
             Back to top
@@ -381,7 +384,7 @@ function SectionHeading({
       <p className="text-sm font-semibold text-[#2367ff]">
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-4xl font-semibold leading-tight text-[#151514] sm:text-5xl">
+      <h2 className="mt-4 text-3xl font-semibold leading-tight text-[#151514] sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       <p className="mt-5 text-lg leading-8 text-[#5f625d]">{description}</p>

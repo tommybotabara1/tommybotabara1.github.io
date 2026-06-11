@@ -22,6 +22,7 @@ export function CapabilityExplorer() {
               key={group.title}
               type="button"
               onClick={() => setActiveIndex(index)}
+              aria-pressed={isActive}
               className={`group rounded-lg border p-4 text-left transition focus:outline-none focus:ring-2 focus:ring-[#66cdb2] focus:ring-offset-2 focus:ring-offset-[#151514] ${
                 isActive
                   ? "border-[#66cdb2] bg-[#fffdf7] text-[#151514]"
@@ -44,7 +45,7 @@ export function CapabilityExplorer() {
       </div>
 
       <article className="overflow-hidden rounded-lg border border-[#fffdf7]/12 bg-[#fffdf7]/6 p-6">
-        <div key={activeGroup.title} className="motion-panel">
+        <div key={activeGroup.title} className="motion-panel" aria-live="polite">
           <p className="flex items-center gap-2 text-sm font-semibold text-[#66cdb2]">
             <span className="data-dot size-1.5 rounded-full bg-[#66cdb2]" />
             Capability detail

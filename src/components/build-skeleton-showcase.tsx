@@ -25,13 +25,14 @@ export function BuildSkeletonShowcase() {
               const isActive = snapshot.id === active.id;
 
               return (
-                <button
-                  key={snapshot.id}
-                  type="button"
-                  onClick={() => setActiveId(snapshot.id)}
-                  className={`min-h-11 rounded-full border px-4 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-[#66cdb2] focus:ring-offset-2 focus:ring-offset-[#111312] ${
-                    isActive
-                      ? "border-[#66cdb2] bg-[#66cdb2] text-[#111312]"
+              <button
+                key={snapshot.id}
+                type="button"
+                onClick={() => setActiveId(snapshot.id)}
+                aria-pressed={isActive}
+                className={`min-h-11 rounded-full border px-4 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-[#66cdb2] focus:ring-offset-2 focus:ring-offset-[#111312] ${
+                  isActive
+                    ? "border-[#66cdb2] bg-[#66cdb2] text-[#111312]"
                       : "border-white/12 bg-white/[0.04] text-[#d8d1c4] hover:border-[#66cdb2]/60"
                   }`}
                 >
@@ -45,9 +46,9 @@ export function BuildSkeletonShowcase() {
             <p className="font-mono text-sm font-semibold text-[#ff6b58]">
               {active.kicker}
             </p>
-            <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+            <h3 className="mt-5 max-w-2xl text-3xl font-semibold leading-tight text-white sm:text-4xl">
               {active.title}
-            </h2>
+            </h3>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#c9c4ba]">
               {active.description}
             </p>
@@ -88,9 +89,9 @@ function FolderWindow({ snapshot }: { snapshot: BuildSnapshot }) {
   return (
     <div className="motion-panel overflow-hidden rounded-lg border border-white/10 bg-[#141716] shadow-2xl shadow-black/40">
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-        <span className="data-dot size-3 rounded-full bg-[#ff5f57]" />
-        <span className="data-dot size-3 rounded-full bg-[#ffbd2e] [animation-delay:120ms]" />
-        <span className="data-dot size-3 rounded-full bg-[#28c840] [animation-delay:240ms]" />
+        <span className="size-3 rounded-full bg-[#ff5f57]" />
+        <span className="size-3 rounded-full bg-[#ffbd2e]" />
+        <span className="size-3 rounded-full bg-[#28c840]" />
         <span className="ml-2 font-mono text-sm text-[#b8b9b3]">{snapshot.repo}</span>
       </div>
 

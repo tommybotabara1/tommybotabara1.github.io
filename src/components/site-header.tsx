@@ -74,8 +74,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-[#ded8cb]/80 bg-[#fbf8f1]/88 backdrop-blur-xl">
       <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a
-          href="#top"
+          href="#content"
           onClick={() => setActiveHref(navItems[0].href)}
+          aria-label="Go to Tommy Botabara portfolio intro"
           className="group flex min-h-11 min-w-11 shrink-0 items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
         >
           <span className="flex size-9 items-center justify-center rounded-full bg-[#151514] text-sm font-semibold text-[#fbf8f1]">
@@ -103,9 +104,12 @@ export function SiteHeader() {
                       : "text-[#5f625d] hover:bg-[#151514] hover:text-[#fffdf7]"
                   }`}
                 >
-                  {isActive ? (
-                    <span className="data-dot size-1.5 rounded-full bg-[#66cdb2]" />
-                  ) : null}
+                  <span
+                    aria-hidden="true"
+                    className={`size-1.5 rounded-full bg-[#66cdb2] transition-opacity ${
+                      isActive ? "data-dot opacity-100" : "opacity-0"
+                    }`}
+                  />
                   {item.label}
                 </a>
               );

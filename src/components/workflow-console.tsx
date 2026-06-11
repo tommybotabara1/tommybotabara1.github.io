@@ -10,6 +10,14 @@ export function WorkflowConsole() {
   const active = workflowDemos.find((demo) => demo.id === activeId) ?? workflowDemos[0];
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      const frame = window.requestAnimationFrame(() => setTypedCommand(active.command));
+
+      return () => window.cancelAnimationFrame(frame);
+    }
+
     let index = 0;
     const timer = window.setInterval(() => {
       index += 1;
@@ -25,10 +33,10 @@ export function WorkflowConsole() {
   return (
     <div className="mt-12 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
       <div className="rounded-lg border border-[#ded8cb] bg-[#fffdf7] p-4 shadow-sm sm:p-5">
-        <p className="mb-4 text-sm font-semibold text-[#2367ff]">
+        <p id="workflow-picker-label" className="mb-4 text-sm font-semibold text-[#2367ff]">
           Choose a workflow
         </p>
-        <div className="grid gap-3">
+        <div className="grid gap-3" aria-labelledby="workflow-picker-label">
           {workflowDemos.map((demo) => {
             const isActive = demo.id === active.id;
 
@@ -37,6 +45,7 @@ export function WorkflowConsole() {
                 key={demo.id}
                 type="button"
                 onClick={() => setActiveId(demo.id)}
+                aria-pressed={isActive}
                 className={`group rounded-lg border p-4 text-left transition focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fffdf7] ${
                   isActive
                     ? "border-[#2367ff] bg-[#eef3ff] shadow-sm"
@@ -44,7 +53,12 @@ export function WorkflowConsole() {
                 }`}
               >
                 <span className="flex items-center gap-2 text-xs font-semibold text-[#ff6b58]">
-                  {isActive ? <span className="data-dot size-1.5 rounded-full bg-[#2367ff]" /> : null}
+                  <span
+                    aria-hidden="true"
+                    className={`size-1.5 rounded-full bg-[#2367ff] transition-opacity ${
+                      isActive ? "data-dot opacity-100" : "opacity-0"
+                    }`}
+                  />
                   {demo.kicker}
                 </span>
                 <span className="mt-2 block text-lg font-semibold text-[#151514]">
@@ -62,9 +76,9 @@ export function WorkflowConsole() {
       <div className="overflow-hidden rounded-lg border border-[#151514] bg-[#101110] text-[#f6f2e9] shadow-2xl shadow-[#151514]/20">
         <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
           <div className="flex items-center gap-2">
-            <span className="data-dot size-2.5 rounded-full bg-[#ff6b58]" />
-            <span className="data-dot size-2.5 rounded-full bg-[#ffd166] [animation-delay:120ms]" />
-            <span className="data-dot size-2.5 rounded-full bg-[#66cdb2] [animation-delay:240ms]" />
+            <span className="size-2.5 rounded-full bg-[#ff6b58]" />
+            <span className="size-2.5 rounded-full bg-[#ffd166]" />
+            <span className="size-2.5 rounded-full bg-[#66cdb2]" />
           </div>
           <div className="flex items-center gap-2 font-mono text-xs text-[#b9b3a7]">
             <Terminal aria-hidden="true" className="size-4" />

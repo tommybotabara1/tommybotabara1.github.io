@@ -34,13 +34,14 @@ export function ProjectExplorer() {
           const isActive = activeFilter === filter.value;
 
           return (
-            <button
-              key={filter.value}
-              type="button"
-              onClick={() => setFilter(filter.value)}
-              className={`min-h-11 shrink-0 rounded-full border px-4 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1] ${
-                isActive
-                  ? "border-[#151514] bg-[#151514] text-[#fffdf7]"
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setFilter(filter.value)}
+                aria-pressed={isActive}
+                className={`min-h-11 shrink-0 rounded-full border px-4 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1] ${
+                  isActive
+                    ? "border-[#151514] bg-[#151514] text-[#fffdf7]"
                   : "border-[#ded8cb] bg-[#fffdf7] text-[#5f625d] hover:border-[#2367ff] hover:text-[#2367ff]"
               }`}
             >
@@ -48,10 +49,10 @@ export function ProjectExplorer() {
             </button>
           );
         })}
-      </div>
+        </div>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.44fr]">
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="order-2 grid gap-5 md:grid-cols-2 lg:order-1">
           {visibleProjects.map((project, projectIndex) => {
             const isActive = project.title === activeProject.title;
 
@@ -67,6 +68,7 @@ export function ProjectExplorer() {
                 <button
                   type="button"
                   onClick={() => setActiveProjectTitle(project.title)}
+                  onFocus={() => setActiveProjectTitle(project.title)}
                   className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
                 >
                   <div className="relative aspect-[16/11] overflow-hidden bg-[#ece7dc]">
@@ -79,7 +81,7 @@ export function ProjectExplorer() {
                       className="object-cover"
                     />
                     <div className="motion-scan absolute inset-0" />
-                    <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#151514]/78 px-3 py-1.5 text-xs font-medium text-[#fffdf7] opacity-0 transition group-hover:opacity-100">
+                    <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#151514]/78 px-3 py-1.5 text-xs font-medium text-[#fffdf7] opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
                       <span className="data-dot size-1.5 rounded-full bg-[#66cdb2]" />
                       Inspectable build
                     </div>
@@ -90,9 +92,9 @@ export function ProjectExplorer() {
                     <span>{project.eyebrow}</span>
                     <span>{project.year}</span>
                   </div>
-                  <h2 className="mt-4 text-2xl font-semibold text-[#151514]">
+                  <h3 className="mt-4 text-2xl font-semibold text-[#151514]">
                     {project.title}
-                  </h2>
+                  </h3>
                   <p className="mt-3 min-h-24 text-base leading-7 text-[#5f625d]">
                     {project.description}
                   </p>
@@ -147,7 +149,7 @@ export function ProjectExplorer() {
           })}
         </div>
 
-        <aside className="h-fit overflow-hidden rounded-lg border border-[#ded8cb] bg-[#151514] p-5 text-[#fffdf7] lg:sticky lg:top-24">
+        <aside className="order-1 h-fit overflow-hidden rounded-lg border border-[#ded8cb] bg-[#151514] p-5 text-[#fffdf7] lg:order-2 lg:sticky lg:top-24">
           <div key={activeProject.title} className="motion-panel">
             <p className="flex items-center gap-2 text-xs font-semibold text-[#66cdb2]">
               <span className="data-dot size-1.5 rounded-full bg-[#66cdb2]" />
