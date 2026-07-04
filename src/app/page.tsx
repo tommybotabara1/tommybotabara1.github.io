@@ -6,7 +6,9 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
   Database,
+  Download,
   Layers,
+  Link,
   Mail,
   MapPin,
   Send,
@@ -28,6 +30,8 @@ import {
 
 const socialIcons = {
   Email: Mail,
+  LinkedIn: Link,
+  "Download CV": Download,
 } satisfies Record<(typeof socialLinks)[number]["label"], LucideIcon>;
 
 export default function Home() {
@@ -338,6 +342,9 @@ export default function Home() {
                     <a
                       key={link.label}
                       href={link.href}
+                      download={link.download}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
                       className="flex min-h-14 items-center justify-between gap-4 rounded-lg border border-[#ded8cb] bg-[#fffdf7] px-4 py-3 text-sm font-semibold text-[#151514] transition hover:border-[#2367ff] hover:text-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
                     >
                       <span className="flex items-center gap-3">

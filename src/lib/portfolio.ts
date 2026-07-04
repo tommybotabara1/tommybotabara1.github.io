@@ -42,7 +42,13 @@ export type Note = {
 export type SocialLink = {
   label: string;
   href: string;
+  download?: boolean;
+  external?: boolean;
 };
+
+export const resumeHref = "/Tommy-Botabara-CV.pdf";
+
+export const linkedinHref = "https://www.linkedin.com/in/tommy-botabara-b13496193/";
 
 export type CareerStory = {
   intro: string;
@@ -674,5 +680,7 @@ export const notes = [
 ] as const satisfies readonly Note[];
 
 export const socialLinks = [
-  { label: "Email", href: "mailto:tommybotabara@gmail.com" },
+  { label: "Email", href: "mailto:tommybotabara@gmail.com", download: false, external: false },
+  { label: "LinkedIn", href: linkedinHref, download: false, external: true },
+  { label: "Download CV", href: resumeHref, download: true, external: false },
 ] as const satisfies readonly SocialLink[];

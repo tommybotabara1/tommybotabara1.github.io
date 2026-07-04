@@ -1,7 +1,8 @@
 "use client";
 
+import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
-import { navItems } from "@/lib/portfolio";
+import { navItems, resumeHref } from "@/lib/portfolio";
 
 export function SiteHeader() {
   const [activeHref, setActiveHref] = useState<string>(navItems[0].href);
@@ -87,7 +88,7 @@ export function SiteHeader() {
           </span>
         </a>
 
-        <nav aria-label="Primary navigation" className="-mr-4 overflow-x-auto pr-4 sm:mr-0 sm:pr-0">
+        <nav aria-label="Primary navigation" className="min-w-0 flex-1 overflow-x-auto px-1 sm:px-0">
           <div className="flex min-w-max items-center gap-1 rounded-full border border-[#ded8cb] bg-[#fffdf7]/80 p-1 shadow-sm">
             {navItems.map((item) => {
               const isActive = activeHref === item.href;
@@ -116,6 +117,15 @@ export function SiteHeader() {
             })}
           </div>
         </nav>
+
+        <a
+          href={resumeHref}
+          download
+          className="hidden min-h-11 shrink-0 items-center gap-2 rounded-full bg-[#151514] px-4 text-sm font-semibold text-[#fffdf7] transition hover:bg-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1] md:inline-flex"
+        >
+          <Download aria-hidden="true" className="size-4" />
+          CV
+        </a>
       </div>
     </header>
   );
