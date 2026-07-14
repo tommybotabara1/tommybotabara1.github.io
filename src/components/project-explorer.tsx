@@ -101,6 +101,24 @@ export function ProjectExplorer() {
                   <p className="mt-5 rounded-md border border-[#f0c9bf] bg-[#fff3ef] px-4 py-3 text-sm font-medium leading-6 text-[#2a2b29]">
                     {project.highlight}
                   </p>
+                  <div className="mt-5 grid gap-px overflow-hidden rounded-md border border-[#ded8cb] bg-[#ded8cb]">
+                    <div className="bg-[#fbf8f1] px-4 py-3">
+                      <p className="text-xs font-semibold text-[#2367ff]">
+                        Problem shape
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-[#5f625d]">
+                        {project.problem}
+                      </p>
+                    </div>
+                    <div className="bg-[#fffdf7] px-4 py-3">
+                      <p className="text-xs font-semibold text-[#116f59]">
+                        Capability signal
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-[#5f625d]">
+                        {project.capability}
+                      </p>
+                    </div>
+                  </div>
                   <div className="mt-5 rounded-md border border-[#ded8cb] bg-[#fbf8f1] p-4">
                     <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#151514]">
                       <FileCode2 aria-hidden="true" className="size-4 text-[#2367ff]" />
@@ -161,6 +179,12 @@ export function ProjectExplorer() {
             <p className="mt-3 text-sm leading-6 text-[#d8d1c4]">
               {activeProject.highlight}
             </p>
+            <div className="mt-5 rounded-md border border-white/10 bg-white/[0.05] p-4">
+              <p className="text-xs font-semibold text-[#66cdb2]">Why it matters</p>
+              <p className="mt-2 text-sm leading-6 text-[#d8d1c4]">
+                {activeProject.capability}
+              </p>
+            </div>
             <div className="mt-6 grid gap-3">
               {activeProject.outcomes.map((outcome, index) => (
                 <div

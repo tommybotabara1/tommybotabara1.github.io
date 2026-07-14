@@ -10,6 +10,8 @@ export type Project = {
   category: "event-system" | "growth-site" | "content-pipeline" | "workspace";
   description: string;
   highlight: string;
+  problem: string;
+  capability: string;
   evidence: readonly {
     label: string;
     value: string;
@@ -39,10 +41,29 @@ export type Note = {
   meta: string;
 };
 
+export type MarketLane = {
+  title: string;
+  description: string;
+  proof: string;
+  tools: readonly string[];
+};
+
+export type ProofSignal = {
+  label: string;
+  detail: string;
+  evidence: string;
+};
+
 export type SocialLink = {
   label: string;
   href: string;
+  download?: boolean;
+  external?: boolean;
 };
+
+export const resumeHref = "/Tommy-Botabara-CV.pdf";
+
+export const linkedinHref = "https://www.linkedin.com/in/tommy-botabara-b13496193/";
 
 export type CareerStory = {
   intro: string;
@@ -107,13 +128,67 @@ export const projectFilters = [
 ] as const;
 
 export const navItems = [
+  { label: "What I Do", href: "#help" },
   { label: "Builds", href: "#builds" },
   { label: "Systems", href: "#systems" },
   { label: "Projects", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Notes", href: "#notes" },
   { label: "Contact", href: "#contact" },
 ] as const satisfies readonly NavItem[];
+
+export const marketLanes = [
+  {
+    title: "Data automation that teams can trust",
+    description:
+      "Build Python, SQL, Snowflake, validation, and reconciliation workflows for data work that needs to be traceable and repeatable.",
+    proof:
+      "Current engineering work includes Python ETL, Snowflake pipelines, validation rules, and operational reconciliation.",
+    tools: ["Python", "SQL", "Snowflake", "ETL", "Validation"],
+  },
+  {
+    title: "Business workflows made less manual",
+    description:
+      "Map messy processes, identify the repeatable pieces, then turn them into scripts, trackers, generated files, or lightweight operating systems.",
+    proof:
+      "Local builds show event planning, property content, course material, and workspace automation shaped into working systems.",
+    tools: ["Automation", "Google Sheets", "Node.js", "Docs", "Dashboards"],
+  },
+  {
+    title: "Technical delivery across mixed teams",
+    description:
+      "Translate between stakeholder requirements, controls, timelines, and implementation details so business and engineering teams stay aligned.",
+    proof:
+      "Consulting background across regional migration, enterprise work, UAT/SIT support, documentation, and solution design.",
+    tools: ["Requirements", "Controls", "UAT/SIT", "Documentation", "Delivery"],
+  },
+] as const satisfies readonly MarketLane[];
+
+export const proofSignals = [
+  {
+    label: "Regional data migration",
+    detail:
+      "Led migration support across 10 countries with inconsistent local data formats, reconciliation gaps, and validation concerns.",
+    evidence: "10 countries + data reconciliation",
+  },
+  {
+    label: "Production-minded data work",
+    detail:
+      "Current engineering work covers Python ETL, Snowflake data pipelines, validation rules, reconciliation, and maintainable automation.",
+    evidence: "Python + SQL + Snowflake",
+  },
+  {
+    label: "Public-safe build archive",
+    detail:
+      "Private-work constraints are converted into folder skeletons, workflow demos, scripts, and sanitized project cards that can be inspected.",
+    evidence: "4 shareable build snapshots",
+  },
+  {
+    label: "Business-to-technical bridge",
+    detail:
+      "The portfolio shows requirements shaping, stakeholder translation, process analysis, and implementation choices in the same system.",
+    evidence: "Consulting + engineering delivery",
+  },
+] as const satisfies readonly ProofSignal[];
 
 export const careerStory = {
   intro:
@@ -185,6 +260,10 @@ export const projects = [
       "A private planning workspace that combines guest data, seating logic, RSVP setup, generated pages, and vendor/event references.",
     highlight:
       "Turned spreadsheets, floor plans, and event pages into one structured operating system for planning decisions.",
+    problem:
+      "Planning data lived across sheets, venue references, web pages, and decisions that needed to stay in sync.",
+    capability:
+      "Shows how I structure scattered operational work into a repeatable planning system with generated outputs.",
     evidence: [
       { label: "Public shape", value: "docs/ event pages" },
       { label: "Automation", value: "generate_site.py" },
@@ -215,6 +294,10 @@ export const projects = [
       "An Astro-based brand site and operating workspace for listings, lead capture, social posting, Google Sheets data, and listing photos.",
     highlight:
       "Connected content, listings, data capture, and prebuild scripts so the brand can operate from a repeatable system.",
+    problem:
+      "Listings, content, media, and lead capture needed one operating path instead of separate manual updates.",
+    capability:
+      "Shows how I connect a public site to data sources, media prep, and repeatable marketing operations.",
     evidence: [
       { label: "Site layer", value: "Astro pages" },
       { label: "Data flow", value: "Sheets + Drive" },
@@ -245,6 +328,10 @@ export const projects = [
       "A course-development workspace for research packs, module extracts, syllabus refreshes, assessment content, and DOCX generation.",
     highlight:
       "Converted loose teaching material into structured source files, extracts, research packs, and regeneratable outputs.",
+    problem:
+      "Teaching material had to move between research, modules, syllabus work, assessments, and polished document output.",
+    capability:
+      "Shows how I keep source material, generated documents, and review artifacts traceable across revisions.",
     evidence: [
       { label: "Source", value: "Markdown pack" },
       { label: "Generated", value: "DOCX output" },
@@ -275,6 +362,10 @@ export const projects = [
       "A personal AI operating-system workspace with context, decisions, reusable skills, scripts, project folders, and output templates.",
     highlight:
       "Created a durable working structure for turning repeatable tasks into documented, reusable automation capabilities.",
+    problem:
+      "Recurring work across projects needed memory, decisions, repeatable skills, and scripts instead of one-off chat outcomes.",
+    capability:
+      "Shows how I design AI-assisted workspaces where knowledge and automation compound over time.",
     evidence: [
       { label: "Memory", value: "context/ logs" },
       { label: "Tooling", value: "Python + JS scripts" },
@@ -674,5 +765,7 @@ export const notes = [
 ] as const satisfies readonly Note[];
 
 export const socialLinks = [
-  { label: "Email", href: "mailto:tommybotabara@gmail.com" },
+  { label: "Email", href: "mailto:tommybotabara@gmail.com", download: false, external: false },
+  { label: "LinkedIn", href: linkedinHref, download: false, external: true },
+  { label: "Download CV", href: resumeHref, download: true, external: false },
 ] as const satisfies readonly SocialLink[];

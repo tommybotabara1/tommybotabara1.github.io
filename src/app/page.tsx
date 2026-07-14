@@ -6,7 +6,9 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
   Database,
+  Download,
   Layers,
+  Link,
   Mail,
   MapPin,
   Send,
@@ -21,13 +23,17 @@ import { WorkflowConsole } from "@/components/workflow-console";
 import {
   careerStory,
   experienceHighlights,
+  marketLanes,
   notes,
+  proofSignals,
   socialLinks,
   teamReliance,
 } from "@/lib/portfolio";
 
 const socialIcons = {
   Email: Mail,
+  LinkedIn: Link,
+  "Download CV": Download,
 } satisfies Record<(typeof socialLinks)[number]["label"], LucideIcon>;
 
 export default function Home() {
@@ -65,15 +71,15 @@ export default function Home() {
               </div>
 
               <p className="mb-4 text-sm font-semibold text-[#2367ff]">
-                Business technology, data automation & AI solutions
+                Data automation, workflow systems & consulting-shaped delivery
               </p>
               <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-[#151514] sm:text-6xl lg:text-7xl">
                 Tommy Botabara
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#3b3d3a] sm:text-xl">
-                Technology Consultant & Data Automation Engineer. I bridge
-                business requirements, data workflows, and practical automation
-                so teams can turn messy processes into reliable systems.
+                I turn messy business processes into reliable data workflows,
+                automation systems, and practical AI workspaces that teams can
+                understand, maintain, and improve.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -82,14 +88,14 @@ export default function Home() {
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#151514] px-5 text-sm font-semibold text-[#fffdf7] transition hover:bg-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
                 >
                   <Mail aria-hidden="true" className="size-4" />
-                  Contact me
+                  Discuss a workflow
                 </a>
                 <a
-                  href="#work"
+                  href="#help"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#151514]/15 bg-[#fffdf7]/82 px-5 text-sm font-semibold text-[#151514] shadow-sm transition hover:border-[#2367ff] hover:text-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
                 >
                   <Layers aria-hidden="true" className="size-4" />
-                  View selected work
+                  See how I help
                 </a>
               </div>
             </div>
@@ -101,7 +107,7 @@ export default function Home() {
                 </p>
                 <p className="mt-3 text-2xl font-semibold leading-tight text-[#151514]">
                   Consulting-shaped technical delivery for teams that need
-                  cleaner data, better controls, and less manual work.
+                  cleaner data, clearer controls, and fewer manual handoffs.
                 </p>
                 <div className="accent-rule mt-6 h-1 w-32 rounded-full" />
               </div>
@@ -123,6 +129,142 @@ export default function Home() {
                 <p className="mt-2 text-sm text-[#5f625d]">{label}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section id="help" className="scroll-mt-24 border-b border-[#ded8cb] bg-[#fbf8f1] pt-20 sm:pt-24">
+          <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+            <div>
+              <p className="text-sm font-semibold text-[#ff6b58]">
+                What I help teams do
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold leading-tight text-[#151514] sm:text-4xl lg:text-5xl">
+                Bring me the messy process before it becomes a clean ticket.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-[#5f625d]">
+                My strongest work sits between business operations and technical
+                implementation: finding the repeatable parts, shaping the data
+                path, building the automation, and documenting enough that the
+                next person can trust it.
+              </p>
+              <div className="mt-8 rounded-lg border border-[#151514]/12 bg-[#fffdf7] p-5">
+                <p className="text-sm font-semibold text-[#151514]">
+                  Best-fit conversations
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#5f625d]">
+                  Data automation roles, analytics engineering support,
+                  workflow cleanup, practical AI tooling, and consulting work
+                  where business requirements need technical shape.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-8">
+              <div className="grid gap-px overflow-hidden rounded-lg border border-[#ded8cb] bg-[#ded8cb]">
+                {marketLanes.map((lane, index) => {
+                  const Icon = [Database, Layers, BriefcaseBusiness][index] ?? CheckCircle2;
+
+                  return (
+                    <article
+                      key={lane.title}
+                      className="motion-list-item bg-[#fffdf7] p-6 sm:p-7"
+                      style={{ animationDelay: `${index * 70}ms` }}
+                    >
+                      <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#151514] text-[#fffdf7]">
+                          <Icon aria-hidden="true" className="size-5" />
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="text-2xl font-semibold leading-tight text-[#151514]">
+                            {lane.title}
+                          </h3>
+                          <p className="mt-3 text-base leading-7 text-[#5f625d]">
+                            {lane.description}
+                          </p>
+                          <p className="mt-4 rounded-md border border-[#c9ddd8] bg-[#edf8f5] px-4 py-3 text-sm font-medium leading-6 text-[#214c43]">
+                            {lane.proof}
+                          </p>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {lane.tools.map((tool) => (
+                              <span
+                                key={tool}
+                                className="rounded-full border border-[#ded8cb] bg-[#fbf8f1] px-3 py-1 text-xs font-medium text-[#5f625d]"
+                              >
+                                {tool}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 bg-[#151514] py-12 text-[#fffdf7] sm:py-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-6 lg:grid-cols-[0.44fr_0.56fr] lg:items-end">
+                <div>
+                  <p className="text-sm font-semibold text-[#66cdb2]">
+                    Proof signals
+                  </p>
+                  <h3 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+                    Evidence a hiring manager can scan quickly.
+                  </h3>
+                </div>
+                <p className="max-w-2xl text-base leading-7 text-[#d8d1c4] lg:justify-self-end">
+                  These are the public-safe signals behind the portfolio:
+                  regional delivery, current data engineering work, inspectable
+                  build artifacts, and the bridge role between business and
+                  implementation.
+                </p>
+              </div>
+
+              <div className="mt-9 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+                {proofSignals.map((signal, index) => (
+                  <div
+                    key={signal.label}
+                    className="motion-list-item flex min-h-[220px] flex-col justify-between bg-[#151514] p-5 sm:p-6"
+                    style={{ animationDelay: `${index * 60}ms` }}
+                  >
+                    <div>
+                      <p className="flex items-center gap-2 text-lg font-semibold leading-tight text-white">
+                        <CheckCircle2 aria-hidden="true" className="size-5 text-[#66cdb2]" />
+                        {signal.label}
+                      </p>
+                      <p className="mt-4 text-sm leading-6 text-[#d8d1c4]">
+                        {signal.detail}
+                      </p>
+                    </div>
+                    <p className="mt-6 font-mono text-xs font-semibold text-[#66cdb2]">
+                      {signal.evidence}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="border-y border-[#ded8cb] bg-[#fffdf7]">
+            <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+              <div className="max-w-3xl">
+                <p className="text-sm font-semibold text-[#ff6b58]">
+                  From proof to build artifacts
+                </p>
+                <p className="mt-2 text-2xl font-semibold leading-tight text-[#151514] sm:text-3xl">
+                  The signals above are backed by inspectable systems below.
+                </p>
+              </div>
+              <a
+                href="#builds"
+                className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-[#151514]/15 bg-[#151514] px-4 text-sm font-semibold text-[#fffdf7] transition hover:bg-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fffdf7]"
+              >
+                View build evidence
+                <ArrowUpRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
           </div>
         </section>
 
@@ -338,6 +480,9 @@ export default function Home() {
                     <a
                       key={link.label}
                       href={link.href}
+                      download={link.download}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
                       className="flex min-h-14 items-center justify-between gap-4 rounded-lg border border-[#ded8cb] bg-[#fffdf7] px-4 py-3 text-sm font-semibold text-[#151514] transition hover:border-[#2367ff] hover:text-[#2367ff] focus:outline-none focus:ring-2 focus:ring-[#2367ff] focus:ring-offset-2 focus:ring-offset-[#fbf8f1]"
                     >
                       <span className="flex items-center gap-3">
